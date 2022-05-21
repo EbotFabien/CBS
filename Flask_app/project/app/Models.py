@@ -77,7 +77,7 @@ class Ledger(db.Model):
     account_debited__data=db.relationship("User", 
         primaryjoin=(account_debited  == User.id),
         backref=db.backref('account_debited__data_',  uselist=False),  uselist=False)
-    account_credited = db.Column(db.Integer,db.ForeignKey('user.id'), nullable=False)
+    account_credited = db.Column(db.Integer,db.ForeignKey('user.id'), nullable=True)
     account_credited__data=db.relationship("User", 
         primaryjoin=(account_credited  == User.id),
         backref=db.backref('account_credited__data_',  uselist=False),  uselist=False)

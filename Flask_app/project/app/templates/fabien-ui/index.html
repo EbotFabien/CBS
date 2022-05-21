@@ -236,8 +236,8 @@
                       <th>stop</th>
                       <th>timeleft</th>
                       {% if current_user.type != "Admin" %}
-                      <th>timeleft</th>
-                      <th>timeleft</th>
+                      <th>Invest</th>
+                      <th>Redraw</th>
                       {%endif%}
                     </tr>
                   </thead>
@@ -254,9 +254,9 @@
                         <td>{{tarif.stop}}</td>
                         <td>{{tarif.time_left }} months</td>
                         {% if current_user.type != "Admin" %}
-                        {% if start > {{tarif.stop}} and tarif.state_transaction == 'processing' %}
-                        <td><a href="{{url_for('ledger.invest_redraw',ledger=tarif,Type=invest)}}" title="see details" class="button is-small is-primary is-fullwidth" style="text-align: center">Reinvest</i></a></td>
-                        <td><a href="{{url_for('ledger.invest_redraw',ledger=tarif,Type=redraw)}}" title="see details" class="button is-small is-primary is-fullwidth" style="text-align: center">Redraw to account</i></a></td>
+                        {% if tarif.stop != None and late > tarif.stop and tarif.state_transaction == 'processing' %}
+                        <td><a href="{{url_for('ledger.invest_redraw',ledger=tarif.id,Type='invest')}}" title="see details" class="button is-small is-primary is-fullwidth" style="text-align: center">Reinvest</i></a></td>
+                        <td><a href="{{url_for('ledger.invest_redraw',ledger=tarif.id,Type='redraw')}}" title="see details" class="button is-small is-primary is-fullwidth" style="text-align: center">Redraw to account</i></a></td>
                         {%else%}
                         <td></td> 
                         <td></td>    

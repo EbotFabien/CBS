@@ -3,7 +3,8 @@ import os
 
 class Config:
     SECRET_KEY='FABIENCLASSIC'
-    SQLALCHEMY_DATABASE_URI ='sqlite:///CBSflask.db'
+    #SQLALCHEMY_DATABASE_URI ='sqlite:///CBSflask.db'
+    SQLALCHEMY_DATABASE_URI = "postgresql+psycopg2://postgres:1234@localhost/cbs"
     MAIL_SERVER ='smtp.infomaniak.com'#'mail.infomaniak.ch'
     MAIL_PORT = 587
     MAIL_USE_TLS =True
@@ -11,8 +12,6 @@ class Config:
     MAIL_USERNAME = 'info@resilion.eu'
     MAIL_PASSWORD = 'Vincent123$'
     UPLOAD_FOLDER=os.path.join(os.path.dirname(os.path.abspath(__file__)), 'static')
-
-
 
 
 

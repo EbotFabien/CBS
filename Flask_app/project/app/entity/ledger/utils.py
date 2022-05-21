@@ -15,14 +15,16 @@ def time_left():
     with app.app_context():
         
         ledg=Ledger.query.filter_by(state_transaction='processing').all()
-        now_utc = datetime.now(timezone.utc) - timedelta(days=1)#add 1 day
+        now_utc = datetime.now(timezone.utc) + timedelta(days=1)#add 1 day
         start=datetime.combine(now_utc,datetime.min.time())
         reinve=datetime.now(timezone.utc) + timedelta(days=11)
+        
         for i in ledg:
-            val=reinve - i.stop
-            if val >=10:
-                reinvest(i)
+            #val=reinve - i.stop
+            #if val >=10:
+                #reinvest(i)
             if  start > i.stop :
+               
                 client_cash(i)
             else:
                 delta= relativedelta.relativedelta(start,i.stop)
@@ -31,6 +33,7 @@ def time_left():
 
 def client_cash(ledger):
     with app.app_context():
+        
         check_acccpro=Account.query.filter_by(id=1).first()
         interest=Interest_percentage.query.all()
 

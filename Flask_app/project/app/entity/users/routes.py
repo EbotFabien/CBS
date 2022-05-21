@@ -185,7 +185,7 @@ def dashboard():
         for sum in Cash_all:
             if sum.amount !=None:
                 final+=sum.amount
-        now_utc = datetime.now(timezone.utc) - timedelta(days=1)#add 1 day
+        now_utc = datetime.now(timezone.utc) + timedelta(days=1)#add 1 day
         start=datetime.combine(now_utc,datetime.min.time())
 
         allled=Ledger.query.filter(or_(Ledger.account_credited==current_user.id,Ledger.account_debited==current_user.id)).all()

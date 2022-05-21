@@ -70,12 +70,12 @@ def individual_interests(id):
 @ledger.route('/<ledger>/<Type>/invest_redraw',methods=['GET','POST'])
 @login_required
 def invest_redraw(ledger,Type):
-    
+    ledgerr=Ledger.query.filter_by(id=int(ledger)).first()
     if Type == 'invest':
-        reinvest(ledger)
+        reinvest(ledgerr)
         return redirect(url_for('users.dashboard'))
     if Type == 'redraw':
-        redraw(ledger)
+        redraw(ledgerr)
         return redirect(url_for('users.dashboard'))
 
 
