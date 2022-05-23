@@ -9,13 +9,13 @@ class Config:
     MAIL_PORT = 587
     MAIL_USE_TLS =True
     BABEL_DEFAULT_LOCALE='fr'
-    MAIL_USERNAME = 'info@resilion.eu'
-    MAIL_PASSWORD = 'Vincent123$'
+    MAIL_USERNAME = 123
+    MAIL_PASSWORD = 123
     UPLOAD_FOLDER=os.path.join(os.path.dirname(os.path.abspath(__file__)), 'static')
 
 
-
-
+ 
+ 
 
 
 
