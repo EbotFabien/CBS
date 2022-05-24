@@ -85,12 +85,14 @@
             </a>
           </li>
 
+          {% if current_user.type == "Admin" %}
           <li class="nav-item">
             <a href="{{url_for('ledger.allledger')}}" class="nav-link">
               <i class="nav-icon text-info"></i>
               <p>Ledger</p>
             </a>
           </li>
+          {%endif%}
 
           <li class="nav-item">
             <a href="{{url_for('users.settings',id=current_user.id)}}" class="nav-link">
@@ -98,12 +100,14 @@
               <p>Profile</p>
             </a>
           </li>
+          {% if current_user.type == "Admin" %}
           <li class="nav-item">
             <a href="{{url_for('users.all_accounts')}}" class="nav-link">
               <i class="nav-icon text-info"></i>
               <p>All Account</p>
             </a>
           </li>
+          {% endif %}
 
         </ul>
       </nav>
@@ -137,6 +141,7 @@
       <div class="container-fluid">
         <!-- Small boxes (Stat box) -->
         <div class="row">
+          {% if current_user.type == "Admin" %}
           <div class="col-lg-3 col-6">
             <!-- small box -->
             <div class="small-box bg-info">
@@ -151,14 +156,21 @@
               <a href="#" class="small-box-footer">More info<i class="fas fa-arrow-circle-right"></i></a>
             </div>
           </div>
+          {% endif %}
           <!-- ./col -->
           <div class="col-lg-3 col-6">
             <!-- small box -->
             <div class="small-box bg-success">
               <div class="inner">
+                {% if current_user.type == "Admin" %}
                 <h3>{{trade_eco}}<sup style="font-size: 20px"></sup></h3>
 
                 <p>Trade eco</p>
+                {%else%}
+                <h3>{{trade_eco}}<sup style="font-size: 20px"></sup></h3>
+
+                <p>My interests</p>
+                {% endif %}
               </div>
               <div class="icon">
                 <i class="ion ion-cash"></i>
@@ -167,6 +179,7 @@
             </div>
           </div>
           <!-- ./col -->
+          {% if current_user.type == "Admin" %}
           <div class="col-lg-3 col-6">
             <!-- small box -->
             <div class="small-box bg-warning">
@@ -181,13 +194,18 @@
               <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
             </div>
           </div>
+          {% endif %}
           <!-- ./col -->
           <div class="col-lg-3 col-6">
             <!-- small box -->
             <div class="small-box bg-danger">
               <div class="inner">
                 <h3>{{final}}</h3>
+                {% if current_user.type == "Admin" %}
                 <p>Amount</p>
+                {%else%}
+                <p>My Money</p>
+                {%endif%}
               </div>
               <div class="icon">
                 <i class="ion ion-persons"></i>
@@ -207,7 +225,11 @@
           <div class="col-12">
             <div class="card">
               <div class="card-header">
+                {% if current_user.type == "Admin" %}
                 <h3 class="card-title">Latest Tranasactions</h3>
+                {%else%}
+                <h3 class="card-title">My Tranasactions</h3>
+                {% endif %}
 
                 <div class="card-tools">
                   <div class="input-group input-group-sm" style="width: 150px;">

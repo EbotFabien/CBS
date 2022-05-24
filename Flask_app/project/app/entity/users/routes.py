@@ -177,9 +177,9 @@ def dashboard():
         #time_left()
         client=User.query.filter_by(type='Client').count()
         trade_fin=User.query.filter_by(type='Tradefin').count()
-        trade_eco=User.query.filter_by(type='Tradeeco').count()
+        trade_eco=0
 
-        Cash_all=Account.query.all()
+        Cash_all=Account.query.filter_by(user_id=current_user.id).all()
         final=0
         
         for sum in Cash_all:
