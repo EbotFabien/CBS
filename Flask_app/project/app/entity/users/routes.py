@@ -32,6 +32,7 @@ def login():
             next_page=request.args.get('next')
             return redirect (next_page) if next_page else  redirect(url_for('users.dashboard'))
         else:
+            print(1234567)
             flash(f'Mauvais Identifiant ou mot de passe, essayez à nouveau','danger')
 
     return render_template('fabien-ui/login.html',legend="login",form=form)
