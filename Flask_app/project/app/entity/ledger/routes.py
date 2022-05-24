@@ -30,15 +30,21 @@ def create_ledger():
             check_acccred=Account.query.filter_by(number=form.account_credited.data).first()
             check_acccred.amount+=form.amount.data
             db.session.commit()
-            ledger=Ledger(account_debited=check_accdeb.user_id,account_credited=check_acccred.user_id,Amount=form.amount.data,state_transaction='processing',type='3 Months')
-            db.session.add(ledger)
-            ledger.transaction_number=int(random.randrange(100000, 999999))
-            db.session.commit()
-            ledger.stop=ledger.date + timedelta(days=100)
-            db.session.commit()
-            delta= relativedelta.relativedelta(ledger.stop,ledger.date)
-            ledger.time_left=delta.months + (delta.years * 12)
-            db.session.commit()
+            if check_accdeb.type ==2:
+                ledger=Ledger(account_debited=check_accdeb.user_id,account_credited=check_acccred.user_id,Amount=form.amount.data,state_transaction='processing',type='3 Months')
+                db.session.add(ledger)
+                ledger.transaction_number=int(random.randrange(100000, 999999))
+                db.session.commit()
+                ledger.stop=ledger.date + timedelta(days=100)
+                db.session.commit()
+                delta= relativedelta.relativedelta(ledger.stop,ledger.date)
+                ledger.time_left=delta.months + (delta.years * 12)
+                db.session.commit()
+            else:
+                ledger=Ledger(account_debited=check_accdeb.user_id,account_credited=check_acccred.user_id,Amount=form.amount.data,state_transaction='transfer',type='transfer')
+                db.session.add(ledger)
+                ledger.transaction_number=int(random.randrange(100000, 999999))
+                db.session.commit()
 
             return redirect(url_for('ledger.allledger'))
 

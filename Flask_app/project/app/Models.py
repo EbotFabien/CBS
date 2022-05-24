@@ -96,7 +96,7 @@ class Ledger(db.Model):
 
 class Interest_percentage(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    type = db.Column(db.String(20))
+    type = db.Column(db.String(1000))
     percentages = db.Column(db.DECIMAL(65,2),default=0.00)#put amt in percentage
     visibility =db.Column(db.Boolean,default=True)
 

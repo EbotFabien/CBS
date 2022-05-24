@@ -267,7 +267,12 @@
                     {%for tarif in ledger %}
                     <tr>
                         <th scope="row">{{tarif.id}}</th>
+                        {% if current_user.type != "Admin" %}
+                        {% if current_user.login != tarif.account_debited__data.login %}
+                        <td></td>
+                        {%else%}
                         <td>{{tarif.account_debited__data.login}}</td>
+                        {% endif%}
                         <td>{{tarif.account_credited__data.login}}</td>
                         <td>{{tarif.Amount}}</td>
                         <td>{{tarif.date.strftime('%d/%m/%Y')}}</td> 
