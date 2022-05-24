@@ -156,7 +156,9 @@
             <div class="card">
               <div class="card-header p-2">
                 <ul class="nav nav-pills">
+                  {% if current_user.type == "Admin" %}
                   <li class="nav-item"><a href="{{url_for('users.modify_interest')}}" class="btn btn-primary btn-block"><b>Modify Interest</b></a></li>
+                  {%endif%}
                 </ul>
               </div><!-- /.card-header -->
               <div class="card-body">
