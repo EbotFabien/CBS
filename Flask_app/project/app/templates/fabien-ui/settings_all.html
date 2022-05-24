@@ -184,7 +184,11 @@
                                 <td>{{tarif.date.strftime('%d/%m/%Y')}}</td> 
                                 <td>{{tarif.state_transaction}}</td>
                                 <td>{{tarif.transaction_number}}</td>	  
-                                <td>{{tarif.stop}}</td>
+                                {% if tarif.stop != None %}
+                                  <td>{{tarif.stop.strftime('%d/%m/%Y')}}</td>
+                                {%else%}  
+                                  <td>{{tarif.stop}}</td>
+                                {%endif%}
                                 <td>{{tarif.time_left }} months</td>                      
                             </tr>
                             {%endfor%}
