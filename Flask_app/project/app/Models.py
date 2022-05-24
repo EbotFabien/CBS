@@ -18,14 +18,14 @@ class Apporteur(db.Model):
 
 class User(db.Model,UserMixin):
     id = db.Column(db.Integer, primary_key=True)
-    username = db.Column(db.String(20))
-    prenom = db.Column(db.String(60))
-    login = db.Column(db.String(20))
-    email = db.Column(db.String(20))
-    adresse = db.Column(db.String(20))
-    type = db.Column(db.String(120))
+    username = db.Column(db.String)
+    prenom = db.Column(db.String)
+    login = db.Column(db.String)
+    email = db.Column(db.String)
+    adresse = db.Column(db.String)
+    type = db.Column(db.String)
     numero = db.Column(db.Integer)
-    password = db.Column(db.String(60))
+    password = db.Column(db.String)
     apporteur_id= db.Column(db.Integer,db.ForeignKey('apporteur.id'),nullable=True)
     visibility =db.Column(db.Boolean,default=True)
 
@@ -48,7 +48,7 @@ class User(db.Model,UserMixin):
 
 class Accounttype(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    type = db.Column(db.String(20))
+    type = db.Column(db.String)
     visibility =db.Column(db.Boolean,default=True)
 
     def __repr__(self):
@@ -84,10 +84,10 @@ class Ledger(db.Model):
     Amount = db.Column(db.DECIMAL(65,2),default=0.00)
     date = db.Column(db.DateTime(),default=datetime.utcnow)
     transaction_number = db.Column(db.Integer)
-    type = db.Column(db.String(60))
-    state_transaction = db.Column(db.String(60))#boolean
+    type = db.Column(db.String)
+    state_transaction = db.Column(db.String)#boolean
     stop = db.Column(db.DateTime())
-    time_left = db.Column(db.String(60))
+    time_left = db.Column(db.String)
     visibility =db.Column(db.Boolean,default=True)
 
     def __repr__(self):

@@ -3,7 +3,7 @@ import os
 
 class Config:
     SECRET_KEY='FABIENCLASSIC'
-   # SQLALCHEMY_DATABASE_URI ='sqlite:///CBSflask.db'
+    #SQLALCHEMY_DATABASE_URI ='sqlite:///CBSflask.db'
     SQLALCHEMY_DATABASE_URI = "postgresql+psycopg2://postgres:1234@localhost/cbs"
     MAIL_SERVER ='smtp.infomaniak.com'#'mail.infomaniak.ch'
     MAIL_PORT = 587
