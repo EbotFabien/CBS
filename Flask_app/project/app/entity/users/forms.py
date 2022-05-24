@@ -51,8 +51,11 @@ class Setting(FlaskForm):
     username =StringField('username',
                                 validators=[DataRequired(),length(min=4 ,max=20)])
     
-    numero =IntegerField('numero',
+    numero =IntegerField('Telephone',
                            validators=[validators.InputRequired()])
+    
+    Account=IntegerField('Account No',
+                            render_kw={'readonly':True})
 
     submit = SubmitField('Modify')
 

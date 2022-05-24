@@ -167,7 +167,7 @@
                   <!-- /.tab-pane -->
 
                   <!-- /.tab-pane --> 
-
+                  {% if current_user.type != "Admin" %}
                   <div class="tab-pane active" id="settings">
                     <form class="form-horizontal" method="POST">
                       {{ form.hidden_tag() }} 
@@ -236,6 +236,22 @@
                         </div>
                         {% endif %}
                       </div>
+                      <div class="form-group row">
+                        {{form.Account.label(class="col-sm-2 col-form-label")}}
+
+                        {% if form.Account.errors %}
+                        {{form.Account(class="col-sm-2 col-form-label is-invalid is-small") }}
+                        <div class="invalid-feedback">
+                            {% for error in form.Account.errors %}
+                            <span>{{ error }}</span>
+                            {% endfor %}
+                        </div>
+                        {% else %}
+                        <div class="col-sm-10">
+                        {{form.Account(class="form-control is-small",value=account.number)}}
+                        </div>
+                        {% endif %}
+                      </div>
 
                       <div class="form-group row">
                         <div class="offset-sm-2 col-sm-10">
@@ -244,6 +260,7 @@
                       </div>
                     </form>
                   </div>
+                  {%endif%}
                   <!-- /.tab-pane -->
                 </div>
                 <!-- /.tab-content -->
