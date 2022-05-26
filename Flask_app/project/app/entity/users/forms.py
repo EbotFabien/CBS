@@ -85,16 +85,16 @@ class invite_(FlaskForm):
 
 
 class interest_perc(FlaskForm):
-    pourcentage3 =DecimalField('Pourcentage 3 mois', validators=[validators.InputRequired()])
+    pourcentage3 =DecimalField('Interet Client / 3 mois', validators=[validators.InputRequired()])
 
     IAC=DecimalField('Interet annuel Client', validators=[validators.InputRequired()])
 
-    IA=DecimalField('Interet apporteur', validators=[validators.InputRequired()])
+    IA=DecimalField('Interet apporteur / 3 mois', validators=[validators.InputRequired()])
 
-    IATE=DecimalField('Interet Trade', validators=[validators.InputRequired()])
+    IATE=DecimalField('Interet Trade / 3 mois', validators=[validators.InputRequired()])
 
     IATF=DecimalField('Interet annuel Trade fin', validators=[validators.InputRequired()])
 
-    profit =DecimalField('Pourcentage profit', validators=[validators.InputRequired()])
+    profit =DecimalField('Pourcentage profit / 3 mois', validators=[validators.InputRequired()])
 
-    submit = SubmitField('Modify   ledger')
+    submit = SubmitField('Modify   Interest')
